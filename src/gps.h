@@ -7,6 +7,12 @@ struct location {
     double speed;
     double altitude;
     double course;
+    int hour;
+    int minute;
+    int second;
+    int day;
+    int month;
+    int year;
 };
 typedef struct location loc_t;
 

@@ -36,14 +36,25 @@ extern void gps_location(loc_t *coord) {
                 coord->latitude = gpgga.latitude;
                 coord->longitude = gpgga.longitude;
                 coord->altitude = gpgga.altitude;
+		coord->hour = gpgga.hour;
+		coord->minute = gpgga.minute;
+		coord->second = gpgga.second;
+
 
                 status |= NMEA_GPGGA;
                 break;
+
             case NMEA_GPRMC:
                 nmea_parse_gprmc(buffer, &gprmc);
 
+		coord->hour = gprmc.hour;
+		coord->minute = gprmc.minute;
+		coord->second = gprmc.second;
                 coord->speed = gprmc.speed;
                 coord->course = gprmc.course;
+		coord->day = gprmc.day;
+		coord->month = gprmc.month;
+		coord->year = gprmc.year;
 
                 status |= NMEA_GPRMC;
                 break;
